@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const Form = ({ socket, userName }) => {
+const Form = ({ socket }) => {
     const [inputValue, setInputValue] = useState('');
+    const [userName, setUsername] = useState("");
+
+    useEffect(() => {
+         setUsername(prompt("What is your name?", "Anonymous"));
+    }, [])
     const onInputChange = e => { 
         setInputValue(e.currentTarget.value);
     };

@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 
 const Chat = ({ socket }) => {
-    const [userName, setUsername] = useState("");
+  
     const [chatMessages, setChatMessages] = useState([]);
     useEffect(() => {
         
         socket.on('CHAT_UPDATE', ({ message, userName }) => {
-           
-            setChatMessages(prev => ([...prev, message]));
-            setUsername(userName);
+            const chatMessage = `${userName}: ${message}`;
+            setChatMessages(prev => ([...prev, chatMessage]));
+            
         window.scrollTo(0, document.body.scrollHeight)
 })
     }, [socket])
 
     return <ul id="messages">{
-        chatMessages.map((msg, index) => { return <li key={index}>{userName }:{msg}</li> })
+        chatMessages.map((msg, index) => { return <li key={index}>{msg}</li> })
     }</ul>
  };
 
