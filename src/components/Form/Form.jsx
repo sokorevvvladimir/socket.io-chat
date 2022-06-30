@@ -18,8 +18,8 @@ const Form = ({ socket }) => {
 }
         return;
      };
-    return <form id ="form" action="" onSubmit={onFormSubmit}>
-        <input id="input" autoComplete="off" type="text" value={inputValue} onChange={ onInputChange} /><button>Send</button>
+    return <form action="" onSubmit={onFormSubmit}>
+        <input autoComplete="off" name="chatMessage" type="text" value={inputValue} onChange={ onInputChange} /><button>Send</button>
 </form>
 };
 
